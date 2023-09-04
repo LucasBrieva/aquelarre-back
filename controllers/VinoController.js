@@ -12,11 +12,12 @@ const registro_vino_admin = async function (req, res) {
             const vinos_arr = await Vino.find({ nombre: data.nombre });
             if (vinos_arr.length == 0) {
 
-                var img_path = req.files.portada.path;
-                var img_name = img_path.split("\\");
-                var portada_name = img_name[2];
+                let img_path = req.files.portada.path;
+                let img_name = img_path.split("\\");
+                let portada_name = img_name[2];
                 data.slug = data.nombre.toLowerCase().replace(/ /g, "-").replace(/[^\w-]+/g, "");
                 data.portada = portada_name;
+                data.portadaNombre = req.files.portada.name;
                 const reg = await Vino.create(data);
 
                 res.status(200).send({ data: reg });

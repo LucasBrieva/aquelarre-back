@@ -10,6 +10,7 @@ var VinoSchema = Schema({
     contenido: { type: String, required: false },
     regionOrigen: { type: String, required: false },
     portada: { type: String, required: true },
+    portadaNombre: { type: String, required: true },
 });
 
 module.exports = mongoose.model('vino', VinoSchema);
